@@ -1,25 +1,25 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const server_1 = require("@apollo/server");
-const index_1 = require("./user/index");
+const user_1 = require("./user");
 async function createApolloGraphqlServer() {
     const gqlServer = new server_1.ApolloServer({
         typeDefs: `
-            ${index_1.User.typeDefs}
+            ${user_1.User.typeDefs}
             type Query {
-               ${index_1.User.queries}
+               ${user_1.User.queries}
             }
 
             type Mutation {
-               ${index_1.User.mutations}
+               ${user_1.User.mutations}
             }
         `,
         resolvers: {
             Query: {
-                ...index_1.User.resolvers.queries,
+                ...user_1.User.resolvers.queries,
             },
             Mutation: {
-                ...index_1.User.resolvers.mutations,
+                ...user_1.User.resolvers.mutations,
             },
         },
     });

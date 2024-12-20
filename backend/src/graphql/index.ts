@@ -1,5 +1,5 @@
 import { ApolloServer } from "@apollo/server";
-import { User } from "./user/index";
+import { User } from "./user";
 
 async function createApolloGraphqlServer() {
   const gqlServer = new ApolloServer({
