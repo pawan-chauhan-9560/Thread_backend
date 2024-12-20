@@ -1,6 +1,6 @@
 import express from "express";
 import { expressMiddleware } from "@apollo/server/express4";
-import { createApolloGraphqlServer } from "./graphql/index";
+import createApolloGraphqlServer  from "./graphql/index";
 import cors from "cors";
 
 async function init() {

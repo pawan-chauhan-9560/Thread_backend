@@ -1,17 +1,17 @@
 import { ApolloServer } from "@apollo/server";
-
-import { prismaClient } from "../lib/db";
 import { User } from "./user/index";
 
-export async function createApolloGraphqlServer() {
+async function createApolloGraphqlServer() {
   const gqlServer = new ApolloServer({
     typeDefs: `
-          type Query {
-            ${User.queries}
-          }
-          type Mutation{
-          ${User.mutations}
-          }
+            ${User.typeDefs}
+            type Query {
+               ${User.queries}
+            }
+
+            type Mutation {
+               ${User.mutations}
+            }
         `,
     resolvers: {
       Query: {
@@ -23,6 +23,10 @@ export async function createApolloGraphqlServer() {
     },
   });
 
+  // Start the gql server
   await gqlServer.start();
+
   return gqlServer;
 }
+
+export default createApolloGraphqlServer;
